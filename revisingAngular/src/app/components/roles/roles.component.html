@@ -1,0 +1,28 @@
+@if(isLoading == true){
+<app-loading></app-loading>
+}@else {
+<ul>
+  @for(roles of allRoles | async; track $index){
+  <li>{{ roles.name }}</li>
+  }
+</ul>
+<div class="row m-5">
+  <div class="col-12">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Sr No.</th>
+          <th>Role Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let role of roleList; let srno = index">
+          <td>{{ srno + 1 }}</td>
+          <td>{{ role.role }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+}

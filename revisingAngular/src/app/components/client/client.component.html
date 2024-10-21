@@ -1,0 +1,193 @@
+@if(isLoading){
+<app-loading></app-loading>
+
+}@else {
+{{ clientObj | json }}
+<div class="row">
+  <div class="col-8">
+    <div class="bg-success p-2">
+      Client {{ currentDate | date : "yyyy-MMM-dd" }}
+    </div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Company Name</th>
+          <th>Address</th>
+          <th>Employee Strength</th>
+          <th>Contact Number</th>
+          <th style="width: 170px">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(client of clientList; track $index){
+        <tr>
+          <td>{{ client.contactPersonName }}</td>
+          <td>{{ client.companyName }}</td>
+          <td>{{ client.address }}</td>
+          <td>{{ client.employeeStrength }}</td>
+          <td>{{ client.contactNo }}</td>
+          <td>
+            <button class="btn btn-primary me-2" (click)="updateClient(client)">
+              Edit
+            </button>
+            <button
+              class="btn btn-danger"
+              (click)="deleteClient(client.clientId)"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header bg-success">New Client</div>
+      <div class="card-body">
+        <form #form="ngForm">
+          <div class="row">
+            <div class="col-6">
+              <label for="">Person Name*</label>
+              <input
+                type="text"
+                [(ngModel)]="this.clientObj.contactPersonName"
+                class="form-control"
+                name="contactPersonName"
+                required
+                #personName="ngModel"
+              />
+              @if(personName.touched && personName.errors?.['required']){
+              <span class="text-danger">This is required</span>
+              }
+            </div>
+            <div class="col-6">
+              <label for="">Company Name*</label>
+              <input
+                type="text"
+                [(ngModel)]="this.clientObj.companyName"
+                class="form-control"
+                name="companyName"
+                #companyName="ngModel"
+                required
+              />
+              @if(companyName.touched && companyName.errors?.['required']){
+              <span class="text-danger">This is required</span>
+              }
+            </div>
+            <div class="col-6">
+              <label for="">Contact Number*</label>
+              <input
+                type="text"
+                [(ngModel)]="this.clientObj.contactNo"
+                class="form-control"
+                name="contactNo"
+                #contactNumber="ngModel"
+                required
+              />
+              @if(contactNumber.touched && contactNumber.errors?.['required']){
+              <span class="text-danger">This is required</span>
+              }
+            </div>
+            <div class="col-6">
+              <label for="">Address</label>
+              <textarea
+                name=""
+                id=""
+                [(ngModel)]="this.clientObj.address"
+                class="form-control"
+                name="Address"
+              ></textarea>
+            </div>
+            <div class="col-6">
+              <label for="">City</label>
+              <input
+                type="text"
+                [(ngModel)]="this.clientObj.city"
+                class="form-control"
+                name="city"
+              />
+            </div>
+            <div class="col-6">
+              <label for="">Pin-code</label>
+              <input
+                type="text"
+                [(ngModel)]="this.clientObj.pincode"
+                class="form-control"
+                name="pincode"
+              />
+            </div>
+            <div class="col-6">
+              <label for="">State</label>
+              <input
+                type="text"
+                [(ngModel)]="this.clientObj.state"
+                class="form-control"
+                name="state"
+              />
+            </div>
+            <div class="col-6">
+              <label for="">Employee Strength</label>
+              <input
+                type="text"
+                [(ngModel)]="this.clientObj.employeeStrength"
+                class="form-control"
+                name="employeeStrength"
+              />
+            </div>
+            <div class="col-6">
+              <label for="">GST Number*</label>
+              <input
+                type="text"
+                [(ngModel)]="this.clientObj.gstNo"
+                class="form-control"
+                name="gstNo"
+                #gstNo="ngModel"
+                required
+              />
+              @if(gstNo.touched && gstNo.errors?.['required']){
+              <span class="text-danger">This is required</span>
+              }
+            </div>
+
+            <div class="col-6">
+              <label for="">Reg Number*</label>
+              <input
+                type="text"
+                [(ngModel)]="this.clientObj.regNo"
+                class="form-control"
+                name="regNo"
+                required
+                #regNo="ngModel"
+              />
+              @if(regNo.touched && regNo.errors?.['required']){
+              <span class="text-danger">This is required</span>
+              }
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-6">
+              <button
+                class="btn btn-success"
+                (click)="saveClient()"
+                [disabled]="!form.valid"
+              >
+                {{ clientObj.clientId != 0 ? "Update Client" : "Save Client" }}
+              </button>
+            </div>
+
+            <div class="col-6">
+              <button class="btn btn-secondary" (click)="resetForm()">
+                Reset
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+}
