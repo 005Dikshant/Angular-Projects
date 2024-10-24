@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-train-ticket',
   standalone: true,
-  imports: [RouterOutlet, FormsModule],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  imports: [FormsModule],
+  templateUrl: './train-ticket.component.html',
+  styleUrl: './train-ticket.component.css',
 })
-export class AppComponent {
+export class TrainTicketComponent {
   cityList = ['Pune', 'Mumbai', 'Nagpur', 'Delhi'];
 
   src = '';

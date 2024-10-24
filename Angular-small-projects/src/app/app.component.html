@@ -1,0 +1,14 @@
+<div>
+  <nav>
+    <button (click)="changeComponent('train')">Train Form</button>
+    <button (click)="changeComponent('movie')">Movie Form</button>
+  </nav>
+
+  @if(currentComponent == 'train'){
+  <app-train-ticket></app-train-ticket>
+  }@else if (currentComponent == 'movie') {
+  <app-movie-ticket></app-movie-ticket>
+  }@else {
+  <h1>Invalid Component</h1>
+  }
+</div>
