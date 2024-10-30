@@ -38,12 +38,15 @@
     <!-- Collapsible wrapper -->
 
     <!-- Right elements -->
-    <!-- <div class="d-flex align-items-center">
-      
-      <a class="link-secondary me-3" href="#">
-        <i class="fa fa-shopping-cart"></i>
-      </a>
-      <div
+    <div class="d-flex align-items-center">
+      <a class="link-secondary me-3" href="#"></a>
+      <button class="btn btn-success btn-sm">Login</button>
+      <button class="btn btn-success btn-sm mx-2" (click)="openModel()">
+        Register
+      </button>
+      <i class="fa fa-shopping-cart"></i>
+
+      <!--<div
         class="dropdown-menu dropdown-menu-end show"
         style="position: absolute; right: 13px; top: 60px"
         aria-labelledby="navbarDropdownMenuAvatar"
@@ -145,9 +148,138 @@
             </tr>
           </tbody>
         </table>
-      </div>
-    </div> -->
+      </div> -->
+    </div>
   </div>
 </nav>
 
 <router-outlet> </router-outlet>
+
+<!-- The Modal -->
+<div class="modal" id="myModal" #registerModel>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Register</h4>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          (click)="closeModel()"
+        ></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-12">
+            <label for="">Name</label>
+            <input type="text" class="form-control" [(ngModel)]="user.Name" />
+          </div>
+          <div class="col-12">
+            <label for="">Mobile Number</label>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="user.MobileNo"
+            />
+          </div>
+          <div class="col-12">
+            <label for="">Password</label>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="user.Password"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-danger"
+          data-bs-dismiss="modal"
+          (click)="closeModel()"
+        >
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-success"
+          data-bs-dismiss="modal"
+          (click)="registerUser()"
+        >
+          Register
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="myModal" #loginModel>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Register</h4>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          (click)="closeModel()"
+        ></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-12">
+            <label for="">Name</label>
+            <input type="text" class="form-control" [(ngModel)]="user.Name" />
+          </div>
+          <div class="col-12">
+            <label for="">Mobile Number</label>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="user.MobileNo"
+            />
+          </div>
+          <div class="col-12">
+            <label for="">Password</label>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="user.Password"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-danger"
+          data-bs-dismiss="modal"
+          (click)="closeModel()"
+        >
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-success"
+          data-bs-dismiss="modal"
+          (click)="registerUser()"
+        >
+          Register
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--9898989890-->

@@ -11,6 +11,20 @@ export interface CateogryResponse {
   userId: any;
 }
 
+export class Customer {
+  CustId: number;
+  Name: string;
+  MobileNo: string;
+  Password: string;
+
+  constructor() {
+    this.CustId = 0;
+    this.Name = '';
+    this.MobileNo = '';
+    this.Password = '';
+  }
+}
+
 export interface ProductResponse {
   productId: number;
   productSku: string;
