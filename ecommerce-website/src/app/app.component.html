@@ -39,11 +39,23 @@
 
     <!-- Right elements -->
     <div class="d-flex align-items-center">
-      <a class="link-secondary me-3" href="#"></a>
-      <button class="btn btn-success btn-sm">Login</button>
+      @if(loggedInUserInfo.custId == 0){
+      <button class="btn btn-success btn-sm" (click)="openLoginModel()">
+        Login
+      </button>
       <button class="btn btn-success btn-sm mx-2" (click)="openModel()">
         Register
       </button>
+
+      }@else {
+
+      <button class="btn btn-primary btn-sm">
+        Hello, {{ loggedInUserInfo.name }}
+      </button>
+      <button class="btn btn-warning btn-sm mx-2" (click)="logOffUSer()">
+        LogOff
+      </button>
+      }
       <i class="fa fa-shopping-cart"></i>
 
       <!--<div
@@ -155,7 +167,7 @@
 
 <router-outlet> </router-outlet>
 
-<!-- The Modal -->
+<!-- The Register Modal -->
 <div class="modal" id="myModal" #registerModel>
   <div class="modal-dialog">
     <div class="modal-content">
@@ -175,14 +187,18 @@
         <div class="row">
           <div class="col-12">
             <label for="">Name</label>
-            <input type="text" class="form-control" [(ngModel)]="user.Name" />
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="registerUserInfo.Name"
+            />
           </div>
           <div class="col-12">
             <label for="">Mobile Number</label>
             <input
               type="text"
               class="form-control"
-              [(ngModel)]="user.MobileNo"
+              [(ngModel)]="registerUserInfo.MobileNo"
             />
           </div>
           <div class="col-12">
@@ -190,7 +206,7 @@
             <input
               type="text"
               class="form-control"
-              [(ngModel)]="user.Password"
+              [(ngModel)]="registerUserInfo.Password"
             />
           </div>
         </div>
@@ -219,6 +235,7 @@
   </div>
 </div>
 
+<!-- The Login Modal -->
 <div class="modal" id="myModal" #loginModel>
   <div class="modal-dialog">
     <div class="modal-content">
@@ -229,57 +246,68 @@
           type="button"
           class="btn-close"
           data-bs-dismiss="modal"
-          (click)="closeModel()"
+          (click)="closeLoginModel()"
         ></button>
       </div>
 
       <!-- Modal body -->
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-12">
-            <label for="">Name</label>
-            <input type="text" class="form-control" [(ngModel)]="user.Name" />
-          </div>
-          <div class="col-12">
-            <label for="">Mobile Number</label>
-            <input
-              type="text"
-              class="form-control"
-              [(ngModel)]="user.MobileNo"
-            />
-          </div>
-          <div class="col-12">
-            <label for="">Password</label>
-            <input
-              type="text"
-              class="form-control"
-              [(ngModel)]="user.Password"
-            />
+      <form [formGroup]="loginUserForm">
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-12">
+              <label for="">username</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="username"
+              />
+              @if(loginUserForm.controls['username'].touched){
+              @if(loginUserForm.controls['username'].errors?.['required']){
+              <span class="text-danger">This is required</span>
+              } }
+            </div>
+            <div class="col-12">
+              <label for="">Password</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="password"
+              />
+              @if(loginUserForm.controls['password'].touched){
+              @if(loginUserForm.controls['password'].errors?.['required']){
+
+              <span class="text-danger">This is required</span>
+              } }
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-danger"
-          data-bs-dismiss="modal"
-          (click)="closeModel()"
-        >
-          Close
-        </button>
-        <button
-          type="button"
-          class="btn btn-success"
-          data-bs-dismiss="modal"
-          (click)="registerUser()"
-        >
-          Register
-        </button>
-      </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-danger"
+            data-bs-dismiss="modal"
+            (click)="closeLoginModel()"
+          >
+            Close
+          </button>
+          <button
+            type="button"
+            class="btn btn-success"
+            data-bs-dismiss="modal"
+            (click)="loginUser()"
+            [disabled]="loginUserForm.invalid"
+          >
+            Login
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
 
-<!--9898989890-->
+<!--
+username = 9898989894
+pass = aomine
+-->

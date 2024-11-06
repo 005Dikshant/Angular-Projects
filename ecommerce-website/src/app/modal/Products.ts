@@ -13,15 +13,29 @@ export interface CateogryResponse {
 
 export class Customer {
   CustId: number;
+  custId: number;
   Name: string;
   MobileNo: string;
   Password: string;
+  name: string;
 
   constructor() {
     this.CustId = 0;
+    this.custId = 0;
     this.Name = '';
     this.MobileNo = '';
     this.Password = '';
+    this.name = '';
+  }
+}
+
+export class User {
+  UserName: string;
+  UserPassword: string;
+
+  constructor() {
+    this.UserName = '';
+    this.UserPassword = '';
   }
 }
 
