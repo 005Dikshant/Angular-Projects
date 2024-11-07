@@ -62,8 +62,6 @@ export class ProductsComponent implements OnInit {
       return;
     }
 
-    debugger;
-
     const userCart: CartInfo = new CartInfo();
 
     (userCart.CustId = this.loggedInUserInfo.custId),
@@ -74,6 +72,7 @@ export class ProductsComponent implements OnInit {
       .subscribe((res: APIResponseModel) => {
         if (res.result === true) {
           alert('Added to Cart successfully');
+          this.masterService.onCartAdded.next(true); // event has been emitted
         } else {
           alert('Error adding to cart');
         }

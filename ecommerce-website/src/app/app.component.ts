@@ -52,15 +52,12 @@ export class AppComponent implements OnInit {
     const isUser = localStorage.getItem(routes.LOCAL_KEY);
     if (isUser != null) {
       this.loggedInUserInfo = JSON.parse(isUser);
-      console.log(this.loggedInUserInfo);
-      console.log(isUser);
-
-      this.masterService
-        .showCartItems(this.loggedInUserInfo.custId)
-        .subscribe((res: APIResponseModel) => {
-          this.cartProducts.set(res.data);
-        });
+      this.getCartItems();
     }
+
+    this.masterService.onCartAdded.subscribe((res: boolean) => {
+      this.getCartItems();
+    });
   }
 
   loginUser() {
@@ -123,5 +120,13 @@ export class AppComponent implements OnInit {
 
   showCartPopUp() {
     this.isCartOpen = !this.isCartOpen;
+  }
+
+  getCartItems() {
+    this.masterService
+      .showCartItems(this.loggedInUserInfo.custId)
+      .subscribe((res: APIResponseModel) => {
+        this.cartProducts.set(res.data);
+      });
   }
 }
