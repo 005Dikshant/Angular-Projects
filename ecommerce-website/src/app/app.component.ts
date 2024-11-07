@@ -4,10 +4,16 @@ import {
   inject,
   OnInit,
   ViewChild,
+  signal,
 } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MasterService } from './services/master.service';
-import { APIResponseModel, Customer, User } from './modal/Products';
+import {
+  APIResponseModel,
+  CartProductResponse,
+  Customer,
+  User,
+} from './modal/Products';
 import {
   FormControl,
   FormGroup,
@@ -35,6 +41,7 @@ export class AppComponent implements OnInit {
   loginUserInfo: User = new User();
   loggedInUserInfo: Customer = new Customer();
   isCartOpen: boolean = false;
+  cartProducts = signal<CartProductResponse[]>([]);
 
   loginUserForm: FormGroup = new FormGroup({
     username: new FormControl('', [Validators.required]),
@@ -47,6 +54,12 @@ export class AppComponent implements OnInit {
       this.loggedInUserInfo = JSON.parse(isUser);
       console.log(this.loggedInUserInfo);
       console.log(isUser);
+
+      this.masterService
+        .showCartItems(this.loggedInUserInfo.custId)
+        .subscribe((res: APIResponseModel) => {
+          this.cartProducts.set(res.data);
+        });
     }
   }
 

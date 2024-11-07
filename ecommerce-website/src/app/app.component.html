@@ -75,24 +75,26 @@
             <i class="fa fa-close p-2"></i>
           </div>
         </div>
-
         <table class="table table-sm">
           <tbody>
+            @for(items of cartProducts();track $index){
             <tr>
               <td>
                 <div
                   class="rounded"
                   style="
-                    background-image: url(https://unsplash.com/photos/ZBwQ2bCbJjw/download?force=true&amp;w=640);
+                    background-image: url({{ items.productImageUrl }});
                     width: 60px;
                     height: 60px;
                     background-size: cover;
                   "
                 ></div>
               </td>
-              <td class="align-middle text-left">Spy Suit</td>
-              <td class="align-middle text-center">1 pieces</td>
-              <td class="align-middle text-right">$698</td>
+              <td class="align-middle text-left">{{ items.productName }}</td>
+              <td class="align-middle text-center">
+                {{ items.quantity }} pieces
+              </td>
+              <td class="align-middle text-right">${{ items.productPrice }}</td>
               <td class="align-middle text-center">
                 <a
                   href="#delete"
@@ -103,56 +105,7 @@
                 </a>
               </td>
             </tr>
-            <tr>
-              <td>
-                <div
-                  class="rounded"
-                  style="
-                    background-image: url(https://unsplash.com/photos/ZBwQ2bCbJjw/download?force=true&amp;w=640);
-                    width: 60px;
-                    height: 60px;
-                    background-size: cover;
-                  "
-                ></div>
-              </td>
-              <td class="align-middle text-left">Spy Suit</td>
-              <td class="align-middle text-center">1 pieces</td>
-              <td class="align-middle text-right">$698</td>
-              <td class="align-middle text-center">
-                <a
-                  href="#delete"
-                  data-toggle="modal"
-                  data-title="Delete your product ?"
-                >
-                  <i class="fa fa-trash"></i>
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div
-                  class="rounded"
-                  style="
-                    background-image: url(https://unsplash.com/photos/ZBwQ2bCbJjw/download?force=true&amp;w=640);
-                    width: 60px;
-                    height: 60px;
-                    background-size: cover;
-                  "
-                ></div>
-              </td>
-              <td class="align-middle text-left">Spy Suit</td>
-              <td class="align-middle text-center">1 pieces</td>
-              <td class="align-middle text-right">$698</td>
-              <td class="align-middle text-center">
-                <a
-                  href="#delete"
-                  data-toggle="modal"
-                  data-title="Delete your product ?"
-                >
-                  <i class="fa fa-trash"></i>
-                </a>
-              </td>
-            </tr>
+            }
 
             <tr>
               <td colspan="4" class="align-middle text-right">Quantity</td>

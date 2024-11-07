@@ -68,3 +68,16 @@ export interface ProductResponse {
   productImageUrl: string;
   categoryName: string;
 }
+
+export interface CartProductResponse {
+  cartId: number;
+  custId: number;
+  productId: number;
+  quantity: number;
+  productShortName: string;
+  addedDate: string;
+  productName: string;
+  categoryName: string;
+  productImageUrl: string;
+  productPrice: number;
+}

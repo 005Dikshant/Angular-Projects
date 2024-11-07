@@ -2,13 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
 import { routes } from '../constants/constants';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { APIResponseModel, CartInfo, Customer, User } from '../modal/Products';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MasterService {
+  onCartAdded: Subject<boolean> = new Subject();
+
   constructor(private http: HttpClient) {}
 
   getAllProducts(): Observable<APIResponseModel> {
@@ -47,6 +49,12 @@ export class MasterService {
     return this.http.post<APIResponseModel>(
       `${environment.API_URL}${routes.API_POST_METHOD.ADD_TO_CART}`,
       userCart
+    );
+  }
+
+  showCartItems(custId: number): Observable<APIResponseModel> {
+    return this.http.get<APIResponseModel>(
+      `${environment.API_URL}${routes.API_GET_METHOD.GET_CART_PRODUCT_BYCUST_ID}?id=${custId}`
     );
   }
 }
