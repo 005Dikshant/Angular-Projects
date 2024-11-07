@@ -56,10 +56,14 @@
         LogOff
       </button>
       }
-      <i class="fa fa-shopping-cart"></i>
+      <i class="fa fa-shopping-cart text-white" (click)="showCartPopUp()"></i>
 
-      <!--<div
-        class="dropdown-menu dropdown-menu-end show"
+      <div
+        [className]="
+          this.isCartOpen
+            ? 'dropdown-menu dropdown-menu-end show'
+            : 'dropdown-menu dropdown-menu-end hide'
+        "
         style="position: absolute; right: 13px; top: 60px"
         aria-labelledby="navbarDropdownMenuAvatar"
       >
@@ -160,7 +164,7 @@
             </tr>
           </tbody>
         </table>
-      </div> -->
+      </div>
     </div>
   </div>
 </nav>

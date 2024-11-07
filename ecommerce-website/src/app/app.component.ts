@@ -34,6 +34,7 @@ export class AppComponent implements OnInit {
   registerUserInfo: Customer = new Customer();
   loginUserInfo: User = new User();
   loggedInUserInfo: Customer = new Customer();
+  isCartOpen: boolean = false;
 
   loginUserForm: FormGroup = new FormGroup({
     username: new FormControl('', [Validators.required]),
@@ -105,5 +106,9 @@ export class AppComponent implements OnInit {
     if (this.model != null) {
       this.model.nativeElement.style.display = 'none';
     }
+  }
+
+  showCartPopUp() {
+    this.isCartOpen = !this.isCartOpen;
   }
 }
