@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
 import { routes } from '../constants/constants';
 import { Observable } from 'rxjs';
-import { APIResponseModel, Customer, User } from '../modal/Products';
+import { APIResponseModel, CartInfo, Customer, User } from '../modal/Products';
 
 @Injectable({
   providedIn: 'root',
@@ -40,6 +40,13 @@ export class MasterService {
     return this.http.post<APIResponseModel>(
       `${environment.API_URL}${routes.API_POST_METHOD.LOGIN}`,
       user
+    );
+  }
+
+  addToCart(userCart: CartInfo): Observable<APIResponseModel> {
+    return this.http.post<APIResponseModel>(
+      `${environment.API_URL}${routes.API_POST_METHOD.ADD_TO_CART}`,
+      userCart
     );
   }
 }

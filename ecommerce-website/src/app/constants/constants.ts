@@ -7,6 +7,7 @@ export const routes = {
   API_POST_METHOD: {
     REGISTER_USER: 'RegisterCustomer',
     LOGIN: 'Login',
+    ADD_TO_CART: 'AddToCart',
   },
   LOCAL_KEY: 'ecom18',
 };

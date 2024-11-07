@@ -39,6 +39,22 @@ export class User {
   }
 }
 
+export class CartInfo {
+  CartId: number;
+  CustId: number;
+  ProductId: number;
+  Quantity: number;
+  AddedDate: Date;
+
+  constructor() {
+    this.CartId = 0;
+    this.ProductId = 0;
+    this.Quantity = 1;
+    this.AddedDate = new Date();
+    this.CustId = 0;
+  }
+}
+
 export interface ProductResponse {
   productId: number;
   productSku: string;
