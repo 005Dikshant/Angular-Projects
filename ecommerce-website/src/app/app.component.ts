@@ -6,7 +6,7 @@ import {
   ViewChild,
   signal,
 } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { MasterService } from './services/master.service';
 import {
   APIResponseModel,
@@ -27,7 +27,13 @@ import { routes } from './constants/constants';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FormsModule, ReactiveFormsModule, CommonModule],
+  imports: [
+    RouterOutlet,
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
+    RouterLink,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
