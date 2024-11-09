@@ -26,7 +26,7 @@ export class ProductsComponent implements OnInit {
 
   masterService = inject(MasterService);
 
-  loggedInUserInfo: Customer | undefined = undefined;
+  loggedInUserInfo: Customer | null = null;
 
   ngOnInit(): void {
     this.loadAllProducts();
@@ -34,11 +34,7 @@ export class ProductsComponent implements OnInit {
       .getAllCategories()
       .pipe(map((item) => item.data));
 
-    const isUser = localStorage.getItem(routes.LOCAL_KEY);
-
-    if (isUser != null) {
-      this.loggedInUserInfo = JSON.parse(isUser);
-    }
+    this.loggedInUserInfo = this.masterService.loggedInUserInfo;
   }
 
   loadProductsByCategory(categoryId: number) {

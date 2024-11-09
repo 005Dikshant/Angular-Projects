@@ -10,8 +10,15 @@ import { APIResponseModel, CartInfo, Customer, User } from '../modal/Products';
 })
 export class MasterService {
   onCartAdded: Subject<boolean> = new Subject();
+  loggedInUserInfo: Customer = new Customer();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    const isUser = localStorage.getItem(routes.LOCAL_KEY);
+
+    if (isUser != null) {
+      this.loggedInUserInfo = JSON.parse(isUser);
+    }
+  }
 
   getAllProducts(): Observable<APIResponseModel> {
     return this.http.get<APIResponseModel>(

@@ -55,9 +55,9 @@ export class AppComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    const isUser = localStorage.getItem(routes.LOCAL_KEY);
-    if (isUser != null) {
-      this.loggedInUserInfo = JSON.parse(isUser);
+    this.loggedInUserInfo = this.masterService.loggedInUserInfo;
+
+    if (this.loggedInUserInfo.CustId !== 0) {
       this.getCartItems();
     }
 
@@ -131,7 +131,7 @@ export class AppComponent implements OnInit {
 
   getCartItems() {
     this.masterService
-      .showCartItems(this.loggedInUserInfo.custId)
+      .showCartItems(this.loggedInUserInfo?.custId ?? 0)
       .subscribe((res: APIResponseModel) => {
         this.cartProducts.set(res.data);
       });
