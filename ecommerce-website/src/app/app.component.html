@@ -58,6 +58,8 @@
       }
       <i class="fa fa-shopping-cart text-white" (click)="showCartPopUp()"></i>
 
+      @if(loggedInUserInfo.CustId !== 0){
+
       <div
         [className]="
           this.isCartOpen
@@ -96,12 +98,11 @@
               </td>
               <td class="align-middle text-right">${{ items.productPrice }}</td>
               <td class="align-middle text-center">
-                <a
-                  href="#delete"
-                  data-toggle="modal"
-                  data-title="Delete your product ?"
-                >
-                  <i class="fa fa-trash"></i>
+                <a data-title="Delete your product ?">
+                  <i
+                    class="fa fa-trash"
+                    (click)="removeProduct(items.cartId)"
+                  ></i>
                 </a>
               </td>
             </tr>
@@ -118,6 +119,7 @@
           </tbody>
         </table>
       </div>
+      }
     </div>
   </div>
 </nav>

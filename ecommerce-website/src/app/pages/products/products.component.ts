@@ -35,10 +35,9 @@ export class ProductsComponent implements OnInit {
       .pipe(map((item) => item.data));
 
     const isUser = localStorage.getItem(routes.LOCAL_KEY);
+
     if (isUser != null) {
       this.loggedInUserInfo = JSON.parse(isUser);
-      console.log(this.loggedInUserInfo);
-      console.log(isUser);
     }
   }
 

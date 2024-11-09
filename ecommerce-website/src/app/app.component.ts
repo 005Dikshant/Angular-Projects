@@ -71,6 +71,7 @@ export class AppComponent implements OnInit {
           localStorage.setItem(routes.LOCAL_KEY, JSON.stringify(res.data));
           this.loggedInUserInfo = res.data;
           this.closeLoginModel();
+          this.getCartItems();
         } else {
           alert('Invalid Credentials');
         }
@@ -127,6 +128,19 @@ export class AppComponent implements OnInit {
       .showCartItems(this.loggedInUserInfo.custId)
       .subscribe((res: APIResponseModel) => {
         this.cartProducts.set(res.data);
+      });
+  }
+
+  removeProduct(prodId: number) {
+    this.masterService
+      .deleteProductFromCartById(prodId)
+      .subscribe((res: APIResponseModel) => {
+        if (res.result === true) {
+          alert('product removed from cart');
+          this.getCartItems();
+        } else {
+          alert(`Error: in removing item ${res.data}`);
+        }
       });
   }
 }

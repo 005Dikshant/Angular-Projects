@@ -57,4 +57,10 @@ export class MasterService {
       `${environment.API_URL}${routes.API_GET_METHOD.GET_CART_PRODUCT_BYCUST_ID}?id=${custId}`
     );
   }
+
+  deleteProductFromCartById(prodId: number): Observable<APIResponseModel> {
+    return this.http.get<APIResponseModel>(
+      `${environment.API_URL}${routes.API_GET_METHOD.DELETE_PRODUCT_BY_ID}?id=${prodId}`
+    );
+  }
 }
