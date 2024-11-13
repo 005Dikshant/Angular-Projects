@@ -9,7 +9,6 @@ import { Component, OnInit, inject, signal } from '@angular/core';
 import { ProductResponse } from '../../modal/Products';
 import { map, Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
-import { routes } from '../../constants/constants';
 
 @Component({
   selector: 'app-products',

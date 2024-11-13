@@ -52,34 +52,23 @@
           <h4>Your Order</h4>
         </div>
         <div class="card-body">
+          @for(item of userCart$ |async;track $index){
           <div class="border-top d-flex mt-2">
             <img
               class="img-fluid h-25 w-25 p-2"
-              src="../ShopWise/product img/cartImg1.jfif"
-              alt=""
+              [src]="item.productImageUrl"
+              alt="Image not found"
             />
             <div class="ps-3">
-              <p class="p-0 m-0 fw-semibold">Varibale Product 001</p>
-              <p class="p-0 m-0">$78.00</p>
+              <p class="p-0 m-0 fw-semibold">{{ item.productName }}</p>
+              <p class="p-0 m-0">${{ item.productPrice }}</p>
               <p class="text-start mt-4">
                 <button class="btn">QTY : <b>1</b></button>
               </p>
             </div>
           </div>
-          <div class="border-top d-flex mt-2">
-            <img
-              class="img-fluid h-25 w-25 p-2"
-              src="../ShopWise/product img/cartImg2.jfif"
-              alt=""
-            />
-            <div class="ps-3">
-              <p class="p-0 m-0 fw-semibold">Ornare consequat</p>
-              <p class="p-0 m-0">$81.00</p>
-              <p class="text-start mt-4">
-                <button class="btn">QTY : <b>1</b></button>
-              </p>
-            </div>
-          </div>
+          }
+
           <div class="border-top">
             <div class="border-top">
               <div class="d-flex justify-content-between mt-2">
