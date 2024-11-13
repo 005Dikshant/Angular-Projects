@@ -3,7 +3,13 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
 import { routes } from '../constants/constants';
 import { Observable, Subject } from 'rxjs';
-import { APIResponseModel, CartInfo, Customer, User } from '../modal/Products';
+import {
+  APIResponseModel,
+  CartInfo,
+  Customer,
+  User,
+  PlaceOrderRequest,
+} from '../modal/Products';
 
 @Injectable({
   providedIn: 'root',
@@ -68,6 +74,13 @@ export class MasterService {
   deleteProductFromCartById(prodId: number): Observable<APIResponseModel> {
     return this.http.get<APIResponseModel>(
       `${environment.API_URL}${routes.API_GET_METHOD.DELETE_PRODUCT_BY_ID}?id=${prodId}`
+    );
+  }
+
+  placeOrder(order: PlaceOrderRequest): Observable<APIResponseModel> {
+    return this.http.post<APIResponseModel>(
+      `${environment.API_URL}${routes.API_POST_METHOD.PLACE_ORDER}`,
+      order
     );
   }
 }

@@ -10,6 +10,7 @@ export const routes = {
     REGISTER_USER: 'RegisterCustomer',
     LOGIN: 'Login',
     ADD_TO_CART: 'AddToCart',
+    PLACE_ORDER: 'PlaceOrder',
   },
   LOCAL_KEY: 'ecom18',
 };
