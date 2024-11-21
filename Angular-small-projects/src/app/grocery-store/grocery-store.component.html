@@ -231,41 +231,46 @@
                       <th>Sr No</th>
                       <th>Item Name</th>
                       <th>Quantity</th>
+                      <th>Delete</th>
                     </tr>
                   </thead>
                   <tbody>
                     @for(item of addedItemList;track $index){
 
                     <tr>
-                      <td class="text-end">{{ $index + 1 }}</td>
-                      <td class="text-end">{{ item.itemName }}</td>
+                      <td class="text-start">{{ $index + 1 }}</td>
+                      <td class="text-start">{{ item.itemName }}</td>
                       <td class="text-end">
-                        {{ item.qty }}
+                        {{ calculatePrice(item) }}
+                      </td>
+                      <td class="text-center">
+                        <button
+                          class="btn btn-sm btn-danger"
+                          (click)="deleteItem(item)"
+                        >
+                          delete item
+                        </button>
                       </td>
                     </tr>
                     }
                   </tbody>
                   <tfoot>
+                    @if(addedItemList.length <= 0){
                     <tr>
-                      <td class="text-end bg-secondary" colspan="2">Total</td>
+                      <td class="text-center" colspan="100%">
+                        No Items Added Yet
+                      </td>
+                    </tr>
+                    }
+                    <tr>
+                      <td class="text-end bg-secondary" colspan="3">Total</td>
                       <td class="text-end bg-secondary">
-                        <strong id="tot">00.00</strong>
+                        <strong id="tot">{{ totalPrice }}</strong>
                       </td>
                     </tr>
                   </tfoot>
                 </table>
               </div>
-            </div>
-            <!-- </div> -->
-            <ul class="task-list">
-              <li>Create an array of Cities</li>
-              <li>Print the length of the array in the console</li>
-              <li>Print the 3rd element from the array</li>
-            </ul>
-            <div class="text-center py-3">
-              <button id="btn1" class="btn btn-attempt attepfont">
-                Attempt
-              </button>
             </div>
           </div>
         </div>
