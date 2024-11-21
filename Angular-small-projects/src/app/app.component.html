@@ -2,13 +2,16 @@
   <nav>
     <button (click)="changeComponent('train')">Train Form</button>
     <button (click)="changeComponent('movie')">Movie Form</button>
+    <button (click)="changeComponent('grocery')">Grocery</button>
   </nav>
 
   @if(currentComponent == 'train'){
   <app-train-ticket></app-train-ticket>
   }@else if (currentComponent == 'movie') {
   <app-movie-ticket></app-movie-ticket>
-  }@else {
+  }@else if (currentComponent === 'grocery') {
+  <app-grocery-store></app-grocery-store>
+  } @else {
   <h1>Invalid Component</h1>
   }
 </div>
