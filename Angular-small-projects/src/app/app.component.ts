@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { TrainTicketComponent } from './train-ticket/train-ticket.component';
 import { MovieTicketComponent } from './movie-ticket/movie-ticket.component';
 import { GroceryStoreComponent } from './grocery-store/grocery-store.component';
@@ -13,6 +13,8 @@ import { GroceryStoreComponent } from './grocery-store/grocery-store.component';
     TrainTicketComponent,
     MovieTicketComponent,
     GroceryStoreComponent,
+    RouterOutlet,
+    RouterLink,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
