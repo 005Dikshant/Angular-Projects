@@ -1,5 +1,8 @@
 <button (click)="openByDocument()">Open model by Document</button>
 <button (click)="openByViewChild()">Open model by ViewChild</button>
+<button type="button" data-bs-toggle="modal" data-bs-target="#Modal3">
+  Open modal by bootstrap
+</button>
 
 <!-- The Modal -->
 <div class="modal" id="Modal1">
@@ -51,6 +54,30 @@
           class="btn btn-danger"
           (click)="closeByViewChild()"
         >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="Modal3">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Modal Heading</h4>
+        <button type="button" class="close" data-bs-dismiss="modal">
+          &times;
+        </button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">Modal body..</div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
           Close
         </button>
       </div>
