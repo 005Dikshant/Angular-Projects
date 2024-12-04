@@ -9,10 +9,16 @@ import { Component } from '@angular/core';
 })
 export class ModalComponentComponent {
   openByDocument() {
-    document.getElementById('Modal1')?.style.display = 'block';
+    const modal = document.getElementById('Modal1');
+    if (modal) {
+      modal.style.display = 'block';
+    }
   }
 
-  closeByDocumetn() {
-    document.getElementById('Modal1')?.style.display = 'none';
+  closeByDocument() {
+    const modal = document.getElementById('Modal1');
+    if (modal) {
+      modal.style.display = 'none';
+    }
   }
 }
