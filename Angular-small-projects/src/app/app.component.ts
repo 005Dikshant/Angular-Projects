@@ -20,7 +20,7 @@ import { GroceryStoreComponent } from './grocery-store/grocery-store.component';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  currentComponent = 'grocery';
+  currentComponent = 'modal';
 
   changeComponent(componentName: string) {
     this.currentComponent = componentName;
