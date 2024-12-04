@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, signal, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-modal-component',
@@ -9,6 +9,16 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 })
 export class ModalComponentComponent {
   @ViewChild('model2') model2: ElementRef | undefined;
+
+  isModel4Open = signal(false);
+
+  openBySignal() {
+    this.isModel4Open.set(true);
+  }
+
+  closeBySignal() {
+    this.isModel4Open.set(false);
+  }
 
   openByDocument() {
     const modal = document.getElementById('Modal1');
