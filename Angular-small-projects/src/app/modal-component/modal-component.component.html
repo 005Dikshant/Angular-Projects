@@ -5,6 +5,9 @@
 </button>
 
 <button type="button" (click)="openBySignal()">Open modal by Signal</button>
+<button type="button" (click)="changeModel5Status()">
+  Open modal by Variable
+</button>
 
 <!-- The Modal -->
 <div class="modal" id="Modal1">
@@ -108,6 +111,37 @@
       <!-- Modal footer -->
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" (click)="closeBySignal()">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  id="Modal5"
+  [className]="isModel5Open ? 'modal showModel' : 'modal closeModel'"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Modal Heading</h4>
+        <button type="button" class="close" (click)="changeModel5Status()">
+          &times;
+        </button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">Modal body..</div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="changeModel5Status()"
+        >
           Close
         </button>
       </div>

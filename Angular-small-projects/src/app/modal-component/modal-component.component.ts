@@ -12,6 +12,12 @@ export class ModalComponentComponent {
 
   isModel4Open = signal(false);
 
+  isModel5Open = false;
+
+  changeModel5Status() {
+    this.isModel5Open = !this.isModel5Open;
+  }
+
   openBySignal() {
     this.isModel4Open.set(true);
   }
